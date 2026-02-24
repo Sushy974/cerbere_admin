@@ -1,0 +1,25 @@
+name: cerbere_admin
+description: package qui gere les roles et les autorisation avec firebase (Cerbère admin, dépend Admin SDK)
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ^3.9.0
+  flutter: ^3.35.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cerbere:
+    path: ../cerbere
+  dart_firebase_admin:
+    path: ../dart_firebase_admin
+  flutter_bloc: ^9.1.0
+  equatable: ^2.0.0
+  uuid: ^4.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.4
+  very_good_analysis: ^10.0.0
