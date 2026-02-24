@@ -6,7 +6,7 @@
   <img src="https://github.com/Sushy974/cerbere_admin/raw/main/assets/images/cerbere_admin.png" alt="Cerbère Admin" width="400" />
 </p>
 
-Package Flutter complémentaire de [**cerbere**](https://github.com/Sushy974/cerbere) pour la gestion **administrative** des rôles et droits avec **Firebase Admin SDK**.
+Package Flutter complémentaire de [**cerbere**](https://pub.dev/packages/cerbere) pour la gestion **administrative** des rôles et droits avec **Firebase Admin SDK**.
 
 - **cerbere** : rôles et autorisations dans une app classique (sans Admin SDK).
 - **cerbere_admin** : back-office admin (utilisateurs, rôles, droits) avec liste des utilisateurs Firebase Auth via Admin SDK.

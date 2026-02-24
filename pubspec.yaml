@@ -1,6 +1,6 @@
 name: cerbere_admin
 description: Flutter admin package for roles and permissions with Firebase. Companion to cerbere; requires Firebase Admin SDK for user management.
-version: 0.1.0+3
+version: 0.1.0+5
 
 environment:
   sdk: ^3.9.0
@@ -35,6 +35,9 @@ topics:
   - permissions
   - flutter
 
+# Images affichées sur la fiche pub.dev (section Screenshots + vignette du package)
 screenshots:
-  - description: "Logo et identité visuelle du package Cerbère Admin."
+  - description: "Logo Cerbère Admin - package Flutter pour la gestion des rôles et droits avec Firebase Admin SDK."
     path: assets/images/cerbere_admin.png
+  - description: "Identité visuelle Cerbère - lien avec le package cerbere."
+    path: assets/images/cerbere.png
