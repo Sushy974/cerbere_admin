@@ -7,6 +7,17 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+## [0.1.0+3] - 2025-02-24
+
+### Ajouté
+
+- Exemple d'utilisation dans `example/`.
+
+### Corrigé
+
+- Documentation dartdoc pour les symboles publics manquants (constructeurs, `firebaseAdminApp`, `isAdmin`).
+- Dépréciation : `activeColor` remplacé par `activeThumbColor` sur le `Switch`.
+
 ## [0.1.0+2] - 2025-02-24
 
 ### Corrigé
@@ -31,6 +42,7 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `dart_firebase_admin` (Firebase Admin SDK pour Dart).
 - `flutter_bloc`, `equatable`, `uuid`.
 
-[Unreleased]: https://github.com/Sushy974/cerbere_admin/compare/v0.1.0+2...HEAD
+[Unreleased]: https://github.com/Sushy974/cerbere_admin/compare/v0.1.0+3...HEAD
+[0.1.0+3]: https://github.com/Sushy974/cerbere_admin/compare/v0.1.0+2...v0.1.0+3
 [0.1.0+2]: https://github.com/Sushy974/cerbere_admin/compare/v0.1.0+1...v0.1.0+2
 [0.1.0+1]: https://github.com/Sushy974/cerbere_admin/releases/tag/v0.1.0
