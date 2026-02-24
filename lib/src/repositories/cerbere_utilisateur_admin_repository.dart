@@ -7,6 +7,8 @@ import 'package:cerbere/cerbere.dart';
 /// Repository étendu pour l'administration avec support Firebase Admin SDK
 class CerbereUtilisateurAdminRepository
     implements CerbereUtilisateurRepository {
+  /// Creates the admin repository with Firestore and Firebase Admin app.
+  ///
   /// {@macro cerbere_utilisateur_admin_repository}
   CerbereUtilisateurAdminRepository({
     required FirebaseFirestore firestore,
@@ -15,6 +17,8 @@ class CerbereUtilisateurAdminRepository
   }) : _firestore = firestore;
 
   final FirebaseFirestore _firestore;
+
+  /// The Firebase Admin app instance used to list Auth users.
   final FirebaseAdminApp firebaseAdminApp;
   static const String _collection = '_cerbere_utilisateur';
 
@@ -150,6 +154,7 @@ class CerbereUtilisateurAdminRepository
     }
   }
 
+  /// Returns whether the user has the super admin flag.
   @override
   Future<bool> isAdmin(String utilisateurUid) async {
     return _firestore

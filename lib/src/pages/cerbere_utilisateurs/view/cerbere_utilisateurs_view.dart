@@ -401,7 +401,7 @@ class _UserRow extends StatelessWidget {
                               ),
                             );
                       },
-                      activeColor: CerbereTheme.primary,
+                      activeThumbColor: CerbereTheme.primary,
                     ),
                   ],
                 ),

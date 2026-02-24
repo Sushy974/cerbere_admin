@@ -1,0 +1,12 @@
+name: cerbere_admin_example
+description: Example app for the cerbere_admin package.
+publish_to: 'none'
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  cerbere_admin:
+    path: ..
+  flutter:
+    sdk: flutter

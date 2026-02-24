@@ -42,6 +42,8 @@ import '../repositories/cerbere_utilisateur_admin_repository.dart';
 /// }
 /// ```
 class CerbereAdminInitWidget extends StatelessWidget {
+  /// Creates the admin init widget with Firebase Auth, Firestore and Admin SDK.
+  ///
   /// {@macro cerbere_admin_init_widget}
   const CerbereAdminInitWidget({
     required this.child,
