@@ -7,6 +7,7 @@ analyzer:
     always_use_package_imports: ignore
     avoid_catches_without_on_clauses: ignore
     avoid_escaping_inner_quotes: ignore
+    avoid_types_on_closure_parameters: ignore
     avoid_positional_boolean_parameters: ignore
     avoid_redundant_argument_values: ignore
     avoid_unused_constructor_parameters: ignore
