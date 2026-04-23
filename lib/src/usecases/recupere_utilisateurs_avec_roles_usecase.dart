@@ -12,8 +12,8 @@ class RecupereUtilisateursAvecRolesUsecase {
   RecupereUtilisateursAvecRolesUsecase({
     required CerbereUtilisateurAdminRepository utilisateurRepository,
     required RecupereRolesUsecase recupereRolesUsecase,
-  })  : _utilisateurRepository = utilisateurRepository,
-        _recupereRolesUsecase = recupereRolesUsecase;
+  }) : _utilisateurRepository = utilisateurRepository,
+       _recupereRolesUsecase = recupereRolesUsecase;
 
   final CerbereUtilisateurAdminRepository _utilisateurRepository;
   final RecupereRolesUsecase _recupereRolesUsecase;
@@ -21,8 +21,7 @@ class RecupereUtilisateursAvecRolesUsecase {
   static bool _isAnonymous(admin_auth.UserRecord userRecord) {
     final providers = userRecord.providerData;
     if (providers.isEmpty) return true;
-    if (providers.length == 1 &&
-        providers.first.providerId == 'anonymous') {
+    if (providers.length == 1 && providers.first.providerId == 'anonymous') {
       return true;
     }
     return false;
@@ -34,15 +33,14 @@ class RecupereUtilisateursAvecRolesUsecase {
   Future<RecupereUtilisateursAvecRolesResult> execute() async {
     // Récupère les utilisateurs Firebase Auth via Admin SDK (hors anonymes)
     final allUsers = await _utilisateurRepository.getAllFirebaseUsers();
-    final firebaseUsers =
-        allUsers.where((u) => !_isAnonymous(u)).toList();
+    final firebaseUsers = allUsers.where((u) => !_isAnonymous(u)).toList();
 
     // Récupère les rôles
     final roles = await _recupereRolesUsecase.execute();
 
     // Récupère les associations utilisateur-rôle
-    final utilisateursAssociations =
-        await _utilisateurRepository.getAllUtilisateurs();
+    final utilisateursAssociations = await _utilisateurRepository
+        .getAllUtilisateurs();
 
     // Crée la liste des utilisateurs avec leurs rôles
     final utilisateursItems = firebaseUsers.map((userRecord) {

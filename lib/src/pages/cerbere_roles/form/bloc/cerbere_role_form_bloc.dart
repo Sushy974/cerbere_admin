@@ -110,9 +110,9 @@ class CerbereRoleFormBloc
         .where((d) => d.cleDroitLie == null)
         .map((d) => d.cle)
         .toSet();
-    
-    final tousParentsCoches = droitsParents.length ==
-            state.droitsSelectionnes.length &&
+
+    final tousParentsCoches =
+        droitsParents.length == state.droitsSelectionnes.length &&
         droitsParents.every((cle) => state.droitsSelectionnes.contains(cle));
 
     // Si tous les parents sont cochés ou partiellement cochés, on décoche tout

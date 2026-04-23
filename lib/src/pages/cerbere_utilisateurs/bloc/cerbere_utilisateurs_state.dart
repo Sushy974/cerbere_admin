@@ -53,7 +53,13 @@ class CerbereUtilisateursState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [status, utilisateurs, roles, messageError, rechercheEmail];
+  List<Object?> get props => [
+    status,
+    utilisateurs,
+    roles,
+    messageError,
+    rechercheEmail,
+  ];
 }
 
 /// Statut du BLoC

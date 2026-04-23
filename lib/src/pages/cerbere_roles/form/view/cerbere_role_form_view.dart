@@ -43,8 +43,12 @@ class CerbereRoleFormView extends StatelessWidget {
                         Expanded(
                           child: Text(
                             state.isModification
-                                ? CerbereLangueVariable.modifierLeRole.traduction
-                                : CerbereLangueVariable.creerUnNouveauRole.traduction,
+                                ? CerbereLangueVariable
+                                      .modifierLeRole
+                                      .traduction
+                                : CerbereLangueVariable
+                                      .creerUnNouveauRole
+                                      .traduction,
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
                         ),
@@ -75,14 +79,18 @@ class CerbereRoleFormView extends StatelessWidget {
                               TextFormField(
                                 initialValue: state.nom,
                                 decoration: InputDecoration(
-                                  labelText: CerbereLangueVariable.nomDuRole.traduction,
-                                  hintText: CerbereLangueVariable.exempleAdministrateur.traduction,
+                                  labelText: CerbereLangueVariable
+                                      .nomDuRole
+                                      .traduction,
+                                  hintText: CerbereLangueVariable
+                                      .exempleAdministrateur
+                                      .traduction,
                                   border: const OutlineInputBorder(),
                                 ),
                                 onChanged: (value) {
-                                  context
-                                      .read<CerbereRoleFormBloc>()
-                                      .add(CerbereRoleFormNomChanged(value));
+                                  context.read<CerbereRoleFormBloc>().add(
+                                    CerbereRoleFormNomChanged(value),
+                                  );
                                 },
                                 enabled: !state.isLoading,
                               ),
@@ -101,7 +109,9 @@ class CerbereRoleFormView extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.all(16),
                                   child: Text(
-                                    CerbereLangueVariable.aucunDroitDisponible.traduction,
+                                    CerbereLangueVariable
+                                        .aucunDroitDisponible
+                                        .traduction,
                                     style: const TextStyle(
                                       fontStyle: FontStyle.italic,
                                       color: Colors.grey,
@@ -112,44 +122,60 @@ class CerbereRoleFormView extends StatelessWidget {
                                 Builder(
                                   builder: (context) {
                                     // Organiser les droits en arborescence
-                                    final droitsParents = state.droitsDisponibles
+                                    final droitsParents = state
+                                        .droitsDisponibles
                                         .where((d) => d.cleDroitLie == null)
                                         .toList();
 
                                     // Fonction pour obtenir les enfants d'un droit
-                                    List<CerbereDroit> getEnfants(String parentCle) {
+                                    List<CerbereDroit> getEnfants(
+                                      String parentCle,
+                                    ) {
                                       return state.droitsDisponibles
-                                          .where((d) => d.cleDroitLie == parentCle)
+                                          .where(
+                                            (d) => d.cleDroitLie == parentCle,
+                                          )
                                           .toList();
                                     }
 
                                     // Fonction pour vérifier si un droit parent est activé
                                     bool isParentActive(String? cleDroitLie) {
                                       if (cleDroitLie == null) return true;
-                                      return state.droitsSelectionnes.contains(cleDroitLie);
+                                      return state.droitsSelectionnes.contains(
+                                        cleDroitLie,
+                                      );
                                     }
 
                                     // Calculer l'état de la checkbox "Tout sélectionner"
                                     final droitsParentsCles = droitsParents
                                         .map((d) => d.cle)
                                         .toSet();
-                                    final tousParentsCoches = droitsParentsCles.length ==
+                                    final tousParentsCoches =
+                                        droitsParentsCles.length ==
                                             state.droitsSelectionnes.length &&
-                                        droitsParentsCles.every((cle) =>
-                                            state.droitsSelectionnes.contains(cle));
-                                    final aucunParentCoche = droitsParentsCles.every(
-                                        (cle) => !state.droitsSelectionnes.contains(cle));
+                                        droitsParentsCles.every(
+                                          (cle) => state.droitsSelectionnes
+                                              .contains(cle),
+                                        );
+                                    final aucunParentCoche = droitsParentsCles
+                                        .every(
+                                          (cle) => !state.droitsSelectionnes
+                                              .contains(cle),
+                                        );
                                     final triStateValue = tousParentsCoches
                                         ? true
                                         : (aucunParentCoche ? false : null);
 
                                     return Column(
-                                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.stretch,
                                       children: [
                                         // Checkbox "Tout sélectionner/désélectionner"
                                         CheckboxListTile(
                                           title: Text(
-                                            CerbereLangueVariable.toutSelectionner.traduction,
+                                            CerbereLangueVariable
+                                                .toutSelectionner
+                                                .traduction,
                                             style: const TextStyle(
                                               fontWeight: FontWeight.w600,
                                             ),
@@ -160,7 +186,9 @@ class CerbereRoleFormView extends StatelessWidget {
                                               ? null
                                               : (bool? value) {
                                                   context
-                                                      .read<CerbereRoleFormBloc>()
+                                                      .read<
+                                                        CerbereRoleFormBloc
+                                                      >()
                                                       .add(
                                                         const CerbereRoleFormToggleAllDroits(),
                                                       );
@@ -169,15 +197,21 @@ class CerbereRoleFormView extends StatelessWidget {
                                         const Divider(),
                                         // Liste des droits organisés en arborescence
                                         ...droitsParents.expand((droitParent) {
-                                          final enfants = getEnfants(droitParent.cle);
-                                          final isParentSelected = state.droitsSelectionnes
+                                          final enfants = getEnfants(
+                                            droitParent.cle,
+                                          );
+                                          final isParentSelected = state
+                                              .droitsSelectionnes
                                               .contains(droitParent.cle);
-                                          
+
                                           return [
                                             // Droit parent
                                             CheckboxListTile(
                                               title: Text(droitParent.nom),
-                                              subtitle: droitParent.description.isNotEmpty
+                                              subtitle:
+                                                  droitParent
+                                                      .description
+                                                      .isNotEmpty
                                                   ? Text(
                                                       droitParent.description,
                                                       style: const TextStyle(
@@ -191,7 +225,9 @@ class CerbereRoleFormView extends StatelessWidget {
                                                   ? null
                                                   : (bool? value) {
                                                       context
-                                                          .read<CerbereRoleFormBloc>()
+                                                          .read<
+                                                            CerbereRoleFormBloc
+                                                          >()
                                                           .add(
                                                             CerbereRoleFormDroitToggled(
                                                               droitParent.cle,
@@ -201,13 +237,18 @@ class CerbereRoleFormView extends StatelessWidget {
                                             ),
                                             // Droits enfants (indentés)
                                             ...enfants.map((droitEnfant) {
-                                              final isEnfantSelected = state.droitsSelectionnes
+                                              final isEnfantSelected = state
+                                                  .droitsSelectionnes
                                                   .contains(droitEnfant.cle);
-                                              final parentActif = isParentActive(
-                                                  droitEnfant.cleDroitLie);
-                                              
+                                              final parentActif =
+                                                  isParentActive(
+                                                    droitEnfant.cleDroitLie,
+                                                  );
+
                                               return Padding(
-                                                padding: const EdgeInsets.only(left: 16.0),
+                                                padding: const EdgeInsets.only(
+                                                  left: 16.0,
+                                                ),
                                                 child: CheckboxListTile(
                                                   title: Text(
                                                     droitEnfant.nom,
@@ -217,26 +258,39 @@ class CerbereRoleFormView extends StatelessWidget {
                                                           : Colors.grey,
                                                     ),
                                                   ),
-                                                  subtitle: droitEnfant.description.isNotEmpty
+                                                  subtitle:
+                                                      droitEnfant
+                                                          .description
+                                                          .isNotEmpty
                                                       ? Text(
-                                                          droitEnfant.description,
+                                                          droitEnfant
+                                                              .description,
                                                           style: TextStyle(
                                                             fontSize: 12,
                                                             color: parentActif
                                                                 ? Colors.grey
-                                                                : Colors.grey.shade400,
+                                                                : Colors
+                                                                      .grey
+                                                                      .shade400,
                                                           ),
                                                         )
                                                       : null,
                                                   value: isEnfantSelected,
-                                                  enabled: parentActif && !state.isLoading,
-                                                  onChanged: parentActif && !state.isLoading
+                                                  enabled:
+                                                      parentActif &&
+                                                      !state.isLoading,
+                                                  onChanged:
+                                                      parentActif &&
+                                                          !state.isLoading
                                                       ? (bool? value) {
                                                           context
-                                                              .read<CerbereRoleFormBloc>()
+                                                              .read<
+                                                                CerbereRoleFormBloc
+                                                              >()
                                                               .add(
                                                                 CerbereRoleFormDroitToggled(
-                                                                  droitEnfant.cle,
+                                                                  droitEnfant
+                                                                      .cle,
                                                                 ),
                                                               );
                                                         }
@@ -271,13 +325,13 @@ class CerbereRoleFormView extends StatelessWidget {
                           onPressed: state.isLoading || !state.isValid
                               ? null
                               : () {
-                                  context
-                                      .read<CerbereRoleFormBloc>()
-                                      .add(
-                                        const CerbereRoleFormSubmitted(),
-                                      );
+                                  context.read<CerbereRoleFormBloc>().add(
+                                    const CerbereRoleFormSubmitted(),
+                                  );
                                 },
-                          child: Text(CerbereLangueVariable.enregistrer.traduction),
+                          child: Text(
+                            CerbereLangueVariable.enregistrer.traduction,
+                          ),
                         ),
                       ],
                     ),

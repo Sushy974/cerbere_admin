@@ -44,12 +44,12 @@ class CerbereRoleFormState extends Equatable {
 
   @override
   List<Object?> get props => [
-        status,
-        nom,
-        droitsSelectionnes,
-        droitsDisponibles,
-        messageError,
-      ];
+    status,
+    nom,
+    droitsSelectionnes,
+    droitsDisponibles,
+    messageError,
+  ];
 }
 
 /// Statut du formulaire

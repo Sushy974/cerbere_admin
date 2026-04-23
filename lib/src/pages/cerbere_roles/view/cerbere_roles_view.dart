@@ -41,161 +41,179 @@ class CerbereRolesView extends StatelessWidget {
             Expanded(
               child: BlocBuilder<CerbereRolesBloc, CerbereRolesState>(
                 builder: (context, state) {
-          if (state.isLoading || state.status == CerbereRolesStatus.initial) {
-            return const Center(
-              child: Padding(
-                padding: EdgeInsets.all(48),
-                child: CircularProgressIndicator(color: CerbereTheme.primary),
-              ),
-            );
-          }
-
-          if (state.isFailure) {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.all(24),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(
-                      Icons.error_outline,
-                      size: 48,
-                      color: CerbereTheme.mutedForeground,
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      CerbereLangueVariable.erreur.traduction,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: CerbereTheme.foreground,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      state.messageError ??
-                          CerbereLangueVariable.uneErreurEstSurvenue.traduction,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: CerbereTheme.secondaryForeground,
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    TextButton.icon(
-                      onPressed: () {
-                        context.read<CerbereRolesBloc>().add(
-                              const CerbereRolesInitial(),
-                            );
-                      },
-                      icon: const Icon(Icons.refresh, size: 18),
-                      label: Text(CerbereLangueVariable.reessayer.traduction),
-                      style: TextButton.styleFrom(
-                        foregroundColor: CerbereTheme.primary,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          }
-
-          if (state.roles.isEmpty && state.isSuccess) {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.all(24),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      width: 64,
-                      height: 64,
-                      decoration: BoxDecoration(
-                        color: CerbereTheme.input,
-                        borderRadius:
-                            BorderRadius.circular(CerbereTheme.radiusMd),
-                        border: Border.all(color: CerbereTheme.border),
-                      ),
-                      child: const Icon(
-                        Icons.shield_outlined,
-                        size: 32,
-                        color: CerbereTheme.secondaryForeground,
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      CerbereLangueVariable.aucunRoleMessage.traduction,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: CerbereTheme.foreground,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      CerbereLangueVariable.creezVotrePremierRole.traduction,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: CerbereTheme.secondaryForeground,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 24),
-                    ElevatedButton.icon(
-                      onPressed: () => _navigateToForm(context),
-                      icon: const Icon(Icons.add, size: 20),
-                      label: Text(CerbereLangueVariable.creerUnRole.traduction),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: CerbereTheme.primary,
-                        foregroundColor: CerbereTheme.primaryForeground,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 12,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(CerbereTheme.radiusXl * 2),
+                  if (state.isLoading ||
+                      state.status == CerbereRolesStatus.initial) {
+                    return const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(48),
+                        child: CircularProgressIndicator(
+                          color: CerbereTheme.primary,
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          }
+                    );
+                  }
 
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              if (state.messageError != null)
-                Container(
-                  margin: const EdgeInsets.only(bottom: 20),
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: CerbereTheme.destructive.withValues(alpha: 0.15),
-                    borderRadius:
-                        BorderRadius.circular(CerbereTheme.radiusMd),
-                    border: Border.all(
-                      color: CerbereTheme.destructive.withValues(alpha: 0.5),
-                    ),
-                  ),
-                  child: Text(
-                    state.messageError!,
-                    style: const TextStyle(
-                      color: CerbereTheme.destructive,
-                      fontSize: 14,
-                    ),
-                  ),
-                ),
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: _RolesListCard(roles: state.roles),
-                ),
-              ),
-            ],
-          );
-        },
+                  if (state.isFailure) {
+                    return Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(24),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(
+                              Icons.error_outline,
+                              size: 48,
+                              color: CerbereTheme.mutedForeground,
+                            ),
+                            const SizedBox(height: 16),
+                            Text(
+                              CerbereLangueVariable.erreur.traduction,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: CerbereTheme.foreground,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              state.messageError ??
+                                  CerbereLangueVariable
+                                      .uneErreurEstSurvenue
+                                      .traduction,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                color: CerbereTheme.secondaryForeground,
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            TextButton.icon(
+                              onPressed: () {
+                                context.read<CerbereRolesBloc>().add(
+                                  const CerbereRolesInitial(),
+                                );
+                              },
+                              icon: const Icon(Icons.refresh, size: 18),
+                              label: Text(
+                                CerbereLangueVariable.reessayer.traduction,
+                              ),
+                              style: TextButton.styleFrom(
+                                foregroundColor: CerbereTheme.primary,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  }
+
+                  if (state.roles.isEmpty && state.isSuccess) {
+                    return Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(24),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 64,
+                              height: 64,
+                              decoration: BoxDecoration(
+                                color: CerbereTheme.input,
+                                borderRadius: BorderRadius.circular(
+                                  CerbereTheme.radiusMd,
+                                ),
+                                border: Border.all(color: CerbereTheme.border),
+                              ),
+                              child: const Icon(
+                                Icons.shield_outlined,
+                                size: 32,
+                                color: CerbereTheme.secondaryForeground,
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+                            Text(
+                              CerbereLangueVariable.aucunRoleMessage.traduction,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: CerbereTheme.foreground,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              CerbereLangueVariable
+                                  .creezVotrePremierRole
+                                  .traduction,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                color: CerbereTheme.secondaryForeground,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(height: 24),
+                            ElevatedButton.icon(
+                              onPressed: () => _navigateToForm(context),
+                              icon: const Icon(Icons.add, size: 20),
+                              label: Text(
+                                CerbereLangueVariable.creerUnRole.traduction,
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: CerbereTheme.primary,
+                                foregroundColor: CerbereTheme.primaryForeground,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                  vertical: 12,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                    CerbereTheme.radiusXl * 2,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  }
+
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      if (state.messageError != null)
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 20),
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: CerbereTheme.destructive.withValues(
+                              alpha: 0.15,
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              CerbereTheme.radiusMd,
+                            ),
+                            border: Border.all(
+                              color: CerbereTheme.destructive.withValues(
+                                alpha: 0.5,
+                              ),
+                            ),
+                          ),
+                          child: Text(
+                            state.messageError!,
+                            style: const TextStyle(
+                              color: CerbereTheme.destructive,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          padding: const EdgeInsets.only(top: 8),
+                          child: _RolesListCard(roles: state.roles),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ],
@@ -316,8 +334,8 @@ class _RolesListCard extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 context.read<CerbereRolesBloc>().add(
-                      CerbereRolesSuppression(uid: roleUid),
-                    );
+                  CerbereRolesSuppression(uid: roleUid),
+                );
                 Navigator.of(dialogContext).pop();
               },
               style: ElevatedButton.styleFrom(
@@ -359,8 +377,7 @@ class _RoleRow extends StatelessWidget {
                 height: 40,
                 decoration: BoxDecoration(
                   color: CerbereTheme.input,
-                  borderRadius:
-                      BorderRadius.circular(CerbereTheme.radiusMd),
+                  borderRadius: BorderRadius.circular(CerbereTheme.radiusMd),
                   border: Border.all(color: CerbereTheme.border),
                 ),
                 child: const Icon(
@@ -398,12 +415,10 @@ class _RoleRow extends StatelessWidget {
               ),
               Material(
                 color: CerbereTheme.destructive.withValues(alpha: 0.1),
-                borderRadius:
-                    BorderRadius.circular(CerbereTheme.radiusMd),
+                borderRadius: BorderRadius.circular(CerbereTheme.radiusMd),
                 child: InkWell(
                   onTap: onDelete,
-                  borderRadius:
-                      BorderRadius.circular(CerbereTheme.radiusMd),
+                  borderRadius: BorderRadius.circular(CerbereTheme.radiusMd),
                   child: const SizedBox(
                     width: 36,
                     height: 36,

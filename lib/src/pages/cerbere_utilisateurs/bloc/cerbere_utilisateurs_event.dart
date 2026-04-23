@@ -33,8 +33,7 @@ final class CerbereUtilisateursRechercheEmailChanged
 }
 
 /// Événement de changement de rôle
-final class CerbereUtilisateursChangementRole
-    extends CerbereUtilisateursEvent {
+final class CerbereUtilisateursChangementRole extends CerbereUtilisateursEvent {
   const CerbereUtilisateursChangementRole({
     required this.utilisateurUid,
     required this.roleUid,

@@ -8,8 +8,8 @@ class RecupereRoleUtilisateurUsecase {
   RecupereRoleUtilisateurUsecase({
     required CerbereUtilisateurAdminRepository utilisateurRepository,
     required CerbereRoleRepository roleRepository,
-  })  : _utilisateurRepository = utilisateurRepository,
-        _roleRepository = roleRepository;
+  }) : _utilisateurRepository = utilisateurRepository,
+       _roleRepository = roleRepository;
 
   final CerbereUtilisateurAdminRepository _utilisateurRepository;
   final CerbereRoleRepository _roleRepository;
@@ -17,8 +17,9 @@ class RecupereRoleUtilisateurUsecase {
   /// Retourne le [CerbereRole] assigné à [utilisateurUid], ou `null`
   /// si l'utilisateur n'a pas d'association ou pas de rôle.
   Future<CerbereRole?> execute(String utilisateurUid) async {
-    final utilisateur =
-        await _utilisateurRepository.getUtilisateurByUid(utilisateurUid);
+    final utilisateur = await _utilisateurRepository.getUtilisateurByUid(
+      utilisateurUid,
+    );
     if (utilisateur == null || utilisateur.roleUid.isEmpty) return null;
 
     return _roleRepository.getRoleByUid(utilisateur.roleUid);

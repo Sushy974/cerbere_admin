@@ -85,7 +85,10 @@ class CerbereTheme {
           borderRadius: BorderRadius.circular(radiusLg),
           borderSide: const BorderSide(color: border),
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 12,
+          vertical: 10,
+        ),
         hintStyle: const TextStyle(color: mutedForeground, fontSize: 14),
         prefixIconColor: secondaryForeground,
       ),
