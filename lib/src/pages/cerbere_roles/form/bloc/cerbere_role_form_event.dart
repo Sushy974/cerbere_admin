@@ -1,3 +1,6 @@
+// Événements internes du bloc formulaire de rôle — pas d'API publique.
+// ignore_for_file: public_member_api_docs
+
 part of 'cerbere_role_form_bloc.dart';
 
 /// Événements pour le formulaire de création/modification de rôle

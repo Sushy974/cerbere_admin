@@ -1,3 +1,6 @@
+// Constantes de design interne des pages Cerbère — pas d'API publique à documenter.
+// ignore_for_file: public_member_api_docs
+
 import 'package:flutter/material.dart';
 
 /// Thème dédié aux pages Cerbère (Utilisateurs et Rôles).

@@ -1,3 +1,6 @@
+// Vue interne assemblée par la page exportée — symboles non exposés en API publique.
+// ignore_for_file: public_member_api_docs
+
 import 'package:cerbere/cerbere.dart';
 import 'package:cerbere_admin/src/pages/cerbere_roles/bloc/cerbere_roles_bloc.dart';
 import 'package:cerbere_admin/src/pages/cerbere_roles/form/view/cerbere_role_form_page.dart';

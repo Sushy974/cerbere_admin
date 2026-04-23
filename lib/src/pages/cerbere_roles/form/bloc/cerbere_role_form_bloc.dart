@@ -1,3 +1,6 @@
+// Bloc interne du formulaire de rôle — événements/états non exposés en API publique.
+// ignore_for_file: public_member_api_docs
+
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';

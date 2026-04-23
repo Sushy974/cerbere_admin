@@ -1,3 +1,6 @@
+// Événements internes du bloc Utilisateurs — pas d'API publique.
+// ignore_for_file: public_member_api_docs
+
 part of 'cerbere_utilisateurs_bloc.dart';
 
 /// Événements pour le BLoC des utilisateurs

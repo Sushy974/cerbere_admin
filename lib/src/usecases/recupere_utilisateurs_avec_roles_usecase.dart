@@ -7,6 +7,8 @@ import 'recupere_roles_usecase.dart';
 /// Usecase pour récupérer les utilisateurs Firebase Auth avec leurs rôles.
 /// Les utilisateurs anonymes sont exclus de la liste.
 class RecupereUtilisateursAvecRolesUsecase {
+  /// Crée le use case avec le repository utilisateur admin et le use case
+  /// de récupération des rôles.
   RecupereUtilisateursAvecRolesUsecase({
     required CerbereUtilisateurAdminRepository utilisateurRepository,
     required RecupereRolesUsecase recupereRolesUsecase,
@@ -26,6 +28,9 @@ class RecupereUtilisateursAvecRolesUsecase {
     return false;
   }
 
+  /// Récupère les utilisateurs Firebase Auth et les enrichit avec le rôle
+  /// Cerbère associé. Les utilisateurs anonymes sont filtrés et le résultat
+  /// est trié par email ascendant.
   Future<RecupereUtilisateursAvecRolesResult> execute() async {
     // Récupère les utilisateurs Firebase Auth via Admin SDK (hors anonymes)
     final allUsers = await _utilisateurRepository.getAllFirebaseUsers();
@@ -88,11 +93,16 @@ class RecupereUtilisateursAvecRolesUsecase {
 
 /// Résultat de la récupération des utilisateurs avec leurs rôles
 class RecupereUtilisateursAvecRolesResult {
+  /// Crée le résultat avec la liste d'utilisateurs enrichis et la liste
+  /// des rôles disponibles.
   RecupereUtilisateursAvecRolesResult({
     required this.utilisateurs,
     required this.roles,
   });
 
+  /// Utilisateurs Firebase Auth enrichis de leur rôle Cerbère.
   final List<CerbereUtilisateurItem> utilisateurs;
+
+  /// Tous les rôles Cerbère disponibles.
   final List<CerbereRole> roles;
 }

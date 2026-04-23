@@ -1,3 +1,6 @@
+// Vue interne assemblée par la page exportée — symboles non exposés en API publique.
+// ignore_for_file: public_member_api_docs
+
 import 'package:cerbere/cerbere.dart';
 import 'package:cerbere_admin/src/models/cerbere_utilisateur_item.dart';
 import 'package:cerbere_admin/src/pages/cerbere_utilisateurs/bloc/cerbere_utilisateurs_bloc.dart';
@@ -401,7 +404,7 @@ class _UserRow extends StatelessWidget {
                               ),
                             );
                       },
-                      activeThumbColor: CerbereTheme.primary,
+                      activeColor: CerbereTheme.primary,
                     ),
                   ],
                 ),
