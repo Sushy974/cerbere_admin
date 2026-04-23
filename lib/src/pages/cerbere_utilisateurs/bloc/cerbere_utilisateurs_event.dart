@@ -1,3 +1,6 @@
+// Événements internes du bloc Utilisateurs — pas d'API publique.
+// ignore_for_file: public_member_api_docs
+
 part of 'cerbere_utilisateurs_bloc.dart';
 
 /// Événements pour le BLoC des utilisateurs
@@ -30,8 +33,7 @@ final class CerbereUtilisateursRechercheEmailChanged
 }
 
 /// Événement de changement de rôle
-final class CerbereUtilisateursChangementRole
-    extends CerbereUtilisateursEvent {
+final class CerbereUtilisateursChangementRole extends CerbereUtilisateursEvent {
   const CerbereUtilisateursChangementRole({
     required this.utilisateurUid,
     required this.roleUid,

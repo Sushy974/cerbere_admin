@@ -1,14 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:dart_firebase_admin/dart_firebase_admin.dart';
-import 'package:dart_firebase_admin/auth.dart' as admin_auth;
 import 'package:cerbere/cerbere.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dart_firebase_admin/auth.dart' as admin_auth;
+import 'package:dart_firebase_admin/dart_firebase_admin.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 /// Repository étendu pour l'administration avec support Firebase Admin SDK
 class CerbereUtilisateurAdminRepository
     implements CerbereUtilisateurRepository {
-  /// Creates the admin repository with Firestore and Firebase Admin app.
-  ///
   /// {@macro cerbere_utilisateur_admin_repository}
   CerbereUtilisateurAdminRepository({
     required FirebaseFirestore firestore,
@@ -18,7 +16,8 @@ class CerbereUtilisateurAdminRepository
 
   final FirebaseFirestore _firestore;
 
-  /// The Firebase Admin app instance used to list Auth users.
+  /// Instance Firebase Admin App utilisée pour lister les utilisateurs
+  /// Firebase Auth.
   final FirebaseAdminApp firebaseAdminApp;
   static const String _collection = '_cerbere_utilisateur';
 
@@ -36,7 +35,7 @@ class CerbereUtilisateurAdminRepository
           .toList();
     } catch (e) {
       throw CerbereException(
-        'Erreur lors de la récupération des utilisateurs: ${e.toString()}',
+        'Erreur lors de la récupération des utilisateurs: $e',
       );
     }
   }
@@ -59,6 +58,7 @@ class CerbereUtilisateurAdminRepository
   Future<CerbereUtilisateur?> getUtilisateurByUid(
     String utilisateurUid,
   ) async {
+    if (utilisateurUid.isEmpty) return null;
     try {
       final doc = await _firestore
           .collection(_collection)
@@ -71,7 +71,7 @@ class CerbereUtilisateurAdminRepository
       });
     } catch (e) {
       throw CerbereException(
-        'Erreur lors de la récupération de l\'utilisateur: ${e.toString()}',
+        "Erreur lors de la récupération de l'utilisateur: $e",
       );
     }
   }
@@ -92,7 +92,7 @@ class CerbereUtilisateurAdminRepository
       });
     } catch (e) {
       throw CerbereException(
-        'Erreur lors de l\'assignation du rôle: ${e.toString()}',
+        "Erreur lors de l'assignation du rôle: $e",
       );
     }
   }
@@ -113,7 +113,7 @@ class CerbereUtilisateurAdminRepository
       }
     } catch (e) {
       throw CerbereException(
-        'Erreur lors de la mise à jour du statut super admin: ${e.toString()}',
+        'Erreur lors de la mise à jour du statut super admin: $e',
       );
     }
   }
@@ -124,7 +124,7 @@ class CerbereUtilisateurAdminRepository
       await _firestore.collection(_collection).doc(utilisateurUid).delete();
     } catch (e) {
       throw CerbereException(
-        'Erreur lors de la suppression du rôle de l\'utilisateur: ${e.toString()}',
+        "Erreur lors de la suppression du rôle de l'utilisateur: $e",
       );
     }
   }
@@ -149,12 +149,12 @@ class CerbereUtilisateurAdminRepository
       return allUsers;
     } catch (e) {
       throw CerbereException(
-        'Erreur lors de la récupération des utilisateurs Firebase Auth: ${e.toString()}',
+        'Erreur lors de la récupération des utilisateurs Firebase Auth: $e',
       );
     }
   }
 
-  /// Returns whether the user has the super admin flag.
+  /// Indique si l'utilisateur est marqué comme super admin.
   @override
   Future<bool> isAdmin(String utilisateurUid) async {
     return _firestore

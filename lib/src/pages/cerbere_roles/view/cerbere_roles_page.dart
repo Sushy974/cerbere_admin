@@ -9,8 +9,6 @@ import 'package:cerbere_admin/src/usecases/supprime_role_usecase.dart';
 
 /// Page de gestion des rôles et droits (autonome, sans CerbereLayout).
 class CerbereRolesPage extends StatelessWidget {
-  /// Creates the roles management page.
-  ///
   /// {@macro cerbere_roles_page}
   const CerbereRolesPage({super.key});
 

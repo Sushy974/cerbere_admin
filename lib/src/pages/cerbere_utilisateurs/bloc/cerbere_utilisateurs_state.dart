@@ -1,3 +1,6 @@
+// État interne du bloc Utilisateurs — pas d'API publique.
+// ignore_for_file: public_member_api_docs
+
 part of 'cerbere_utilisateurs_bloc.dart';
 
 /// État du BLoC des utilisateurs
@@ -50,7 +53,13 @@ class CerbereUtilisateursState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [status, utilisateurs, roles, messageError, rechercheEmail];
+  List<Object?> get props => [
+    status,
+    utilisateurs,
+    roles,
+    messageError,
+    rechercheEmail,
+  ];
 }
 
 /// Statut du BLoC

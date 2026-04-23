@@ -22,10 +22,12 @@ class CerbereUtilisateursPage extends StatelessWidget {
   /// Affiche ou non la colonne nom (par défaut false)
   final bool colonneNom;
 
+  /// Crée une [Page] Navigator 2.0 affichant la [CerbereUtilisateursPage].
   static Page<dynamic> page() => const MaterialPage<dynamic>(
     child: CerbereUtilisateursPage(),
   );
 
+  /// Crée une [Route] Navigator 1.0 vers la [CerbereUtilisateursPage].
   static Route<dynamic> route() {
     return MaterialPageRoute<void>(
       builder: (_) => const CerbereUtilisateursPage(),

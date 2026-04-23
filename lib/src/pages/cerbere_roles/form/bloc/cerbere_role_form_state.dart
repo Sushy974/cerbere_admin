@@ -1,3 +1,6 @@
+// État interne du bloc formulaire de rôle — pas d'API publique.
+// ignore_for_file: public_member_api_docs
+
 part of 'cerbere_role_form_bloc.dart';
 
 /// État du formulaire de création/modification de rôle
@@ -41,12 +44,12 @@ class CerbereRoleFormState extends Equatable {
 
   @override
   List<Object?> get props => [
-        status,
-        nom,
-        droitsSelectionnes,
-        droitsDisponibles,
-        messageError,
-      ];
+    status,
+    nom,
+    droitsSelectionnes,
+    droitsDisponibles,
+    messageError,
+  ];
 }
 
 /// Statut du formulaire

@@ -7,6 +7,23 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+## [0.2.0+6] - 2026-04-23
+
+### Ajouté
+
+- `RecupereRoleUtilisateurUsecase` pour récupérer le rôle `CerbereRole` attribué à un utilisateur.
+- Dartdoc complétée sur les use cases, commandes, et modèles publics (`CerbereUtilisateurItem`, repository admin, widget d'initialisation).
+
+### Modifié
+
+- `CerbereAdminInitWidget` : enregistrement de la langue via `CerbereLangueRegistry` en plus des droits ; langue configurable via le paramètre `langue` (par défaut `CerbereLangue.en`).
+- `CerbereUtilisateurAdminRepository` : simplification des messages d'erreur et alignement sur l'interface `CerbereUtilisateurRepository`.
+- Pages `CerbereUtilisateursPage` / `CerbereRolesPage` et vues associées : refonte UI alignée sur `CerbereTheme` et utilisation des traductions via `CerbereLangueVariable`.
+
+### Dépendances
+
+- `cerbere` mis à jour à `^0.2.0`.
+
 ## [0.1.0+4] - 2025-02-24
 
 ### Corrigé
@@ -48,7 +65,8 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `dart_firebase_admin` (Firebase Admin SDK pour Dart).
 - `flutter_bloc`, `equatable`, `uuid`.
 
-[Unreleased]: https://github.com/Sushy974/cerbere_admin/compare/v0.1.0+4...HEAD
+[Unreleased]: https://github.com/Sushy974/cerbere_admin/compare/v0.2.0+6...HEAD
+[0.2.0+6]: https://github.com/Sushy974/cerbere_admin/compare/v0.1.0+4...v0.2.0+6
 [0.1.0+4]: https://github.com/Sushy974/cerbere_admin/compare/v0.1.0+3...v0.1.0+4
 [0.1.0+3]: https://github.com/Sushy974/cerbere_admin/compare/v0.1.0+2...v0.1.0+3
 [0.1.0+2]: https://github.com/Sushy974/cerbere_admin/compare/v0.1.0+1...v0.1.0+2

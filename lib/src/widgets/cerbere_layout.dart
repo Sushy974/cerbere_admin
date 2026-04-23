@@ -1,3 +1,6 @@
+// Widget de layout interne — pas d'API publique exposée via le barrel.
+// ignore_for_file: public_member_api_docs
+
 import 'package:cerbere_admin/src/theme/cerbere_theme.dart';
 import 'package:flutter/material.dart';
 

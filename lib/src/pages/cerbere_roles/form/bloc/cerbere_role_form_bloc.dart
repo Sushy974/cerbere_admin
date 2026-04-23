@@ -1,3 +1,6 @@
+// Bloc interne du formulaire de rôle — événements/états non exposés en API publique.
+// ignore_for_file: public_member_api_docs
+
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
@@ -107,9 +110,9 @@ class CerbereRoleFormBloc
         .where((d) => d.cleDroitLie == null)
         .map((d) => d.cle)
         .toSet();
-    
-    final tousParentsCoches = droitsParents.length ==
-            state.droitsSelectionnes.length &&
+
+    final tousParentsCoches =
+        droitsParents.length == state.droitsSelectionnes.length &&
         droitsParents.every((cle) => state.droitsSelectionnes.contains(cle));
 
     // Si tous les parents sont cochés ou partiellement cochés, on décoche tout

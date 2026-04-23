@@ -1,3 +1,6 @@
+// Vue interne assemblée par la page exportée — symboles non exposés en API publique.
+// ignore_for_file: public_member_api_docs
+
 import 'package:cerbere/cerbere.dart';
 import 'package:cerbere_admin/src/models/cerbere_utilisateur_item.dart';
 import 'package:cerbere_admin/src/pages/cerbere_utilisateurs/bloc/cerbere_utilisateurs_bloc.dart';
@@ -38,147 +41,170 @@ class CerbereUtilisateursView extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: BlocBuilder<CerbereUtilisateursBloc, CerbereUtilisateursState>(
-                builder: (context, state) {
-        if (state.isLoading) {
-          return const Center(
-            child: Padding(
-              padding: EdgeInsets.all(48),
-              child: CircularProgressIndicator(color: CerbereTheme.primary),
-            ),
-          );
-        }
-
-        if (state.isFailure) {
-          return Center(
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Icon(
-                    Icons.error_outline,
-                    size: 48,
-                    color: CerbereTheme.mutedForeground,
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    CerbereLangueVariable.erreur.traduction,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: CerbereTheme.foreground,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    state.messageError ??
-                        CerbereLangueVariable.uneErreurEstSurvenue.traduction,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: CerbereTheme.secondaryForeground,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  TextButton.icon(
-                    onPressed: () {
-                      context.read<CerbereUtilisateursBloc>().add(
-                            const CerbereUtilisateursInitial(),
-                          );
-                    },
-                    icon: const Icon(Icons.refresh, size: 18),
-                    label: Text(CerbereLangueVariable.reessayer.traduction),
-                    style: TextButton.styleFrom(
-                      foregroundColor: CerbereTheme.primary,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        }
-
-        if (state.utilisateurs.isEmpty) {
-          return Center(
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Text(
-                CerbereLangueVariable.aucunUtilisateurTrouve.traduction,
-                style: const TextStyle(
-                  fontSize: 15,
-                  color: CerbereTheme.secondaryForeground,
-                ),
-              ),
-            ),
-          );
-        }
-
-        final utilisateursFiltres = state.utilisateursFiltres;
-
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            if (state.messageError != null)
-              Container(
-                margin: const EdgeInsets.only(bottom: 20),
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: CerbereTheme.destructive.withValues(alpha: 0.15),
-                  borderRadius: BorderRadius.circular(CerbereTheme.radiusMd),
-                  border: Border.all(
-                    color: CerbereTheme.destructive.withValues(alpha: 0.5),
-                  ),
-                ),
-                child: Text(
-                  state.messageError!,
-                  style: const TextStyle(
-                    color: CerbereTheme.destructive,
-                    fontSize: 14,
-                  ),
-                ),
-              ),
-            _SearchSection(
-              query: state.rechercheEmail,
-              onChanged: (value) {
-                context.read<CerbereUtilisateursBloc>().add(
-                      CerbereUtilisateursRechercheEmailChanged(value),
-                    );
-              },
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.only(top: 8),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    if (utilisateursFiltres.isEmpty)
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 32),
-                        child: Text(
-                          CerbereLangueVariable.aucunNeCorrespondRecherche.traduction,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            color: CerbereTheme.secondaryForeground,
+              child:
+                  BlocBuilder<
+                    CerbereUtilisateursBloc,
+                    CerbereUtilisateursState
+                  >(
+                    builder: (context, state) {
+                      if (state.isLoading) {
+                        return const Center(
+                          child: Padding(
+                            padding: EdgeInsets.all(48),
+                            child: CircularProgressIndicator(
+                              color: CerbereTheme.primary,
+                            ),
                           ),
-                        ),
-                      )
-                    else
-                      _UsersList(
-                        utilisateurs: utilisateursFiltres,
-                        roles: state.roles,
-                        colonneNom: colonneNom,
-                      ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        );
-      },
-              ),
+                        );
+                      }
+
+                      if (state.isFailure) {
+                        return Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(24),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Icon(
+                                  Icons.error_outline,
+                                  size: 48,
+                                  color: CerbereTheme.mutedForeground,
+                                ),
+                                const SizedBox(height: 16),
+                                Text(
+                                  CerbereLangueVariable.erreur.traduction,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: CerbereTheme.foreground,
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  state.messageError ??
+                                      CerbereLangueVariable
+                                          .uneErreurEstSurvenue
+                                          .traduction,
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    color: CerbereTheme.secondaryForeground,
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                                TextButton.icon(
+                                  onPressed: () {
+                                    context.read<CerbereUtilisateursBloc>().add(
+                                      const CerbereUtilisateursInitial(),
+                                    );
+                                  },
+                                  icon: const Icon(Icons.refresh, size: 18),
+                                  label: Text(
+                                    CerbereLangueVariable.reessayer.traduction,
+                                  ),
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: CerbereTheme.primary,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      }
+
+                      if (state.utilisateurs.isEmpty) {
+                        return Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(24),
+                            child: Text(
+                              CerbereLangueVariable
+                                  .aucunUtilisateurTrouve
+                                  .traduction,
+                              style: const TextStyle(
+                                fontSize: 15,
+                                color: CerbereTheme.secondaryForeground,
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+
+                      final utilisateursFiltres = state.utilisateursFiltres;
+
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          if (state.messageError != null)
+                            Container(
+                              margin: const EdgeInsets.only(bottom: 20),
+                              padding: const EdgeInsets.all(16),
+                              decoration: BoxDecoration(
+                                color: CerbereTheme.destructive.withValues(
+                                  alpha: 0.15,
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                  CerbereTheme.radiusMd,
+                                ),
+                                border: Border.all(
+                                  color: CerbereTheme.destructive.withValues(
+                                    alpha: 0.5,
+                                  ),
+                                ),
+                              ),
+                              child: Text(
+                                state.messageError!,
+                                style: const TextStyle(
+                                  color: CerbereTheme.destructive,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          _SearchSection(
+                            query: state.rechercheEmail,
+                            onChanged: (value) {
+                              context.read<CerbereUtilisateursBloc>().add(
+                                CerbereUtilisateursRechercheEmailChanged(value),
+                              );
+                            },
+                          ),
+                          const SizedBox(height: 20),
+                          Expanded(
+                            child: SingleChildScrollView(
+                              padding: const EdgeInsets.only(top: 8),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  if (utilisateursFiltres.isEmpty)
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 32,
+                                      ),
+                                      child: Text(
+                                        CerbereLangueVariable
+                                            .aucunNeCorrespondRecherche
+                                            .traduction,
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                          color:
+                                              CerbereTheme.secondaryForeground,
+                                        ),
+                                      ),
+                                    )
+                                  else
+                                    _UsersList(
+                                      utilisateurs: utilisateursFiltres,
+                                      roles: state.roles,
+                                      colonneNom: colonneNom,
+                                    ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
             ),
           ],
         ),
@@ -262,7 +288,8 @@ class _SearchSectionState extends State<_SearchSection> {
                     fontSize: 14,
                   ),
                   decoration: InputDecoration(
-                    hintText: CerbereLangueVariable.rechercherParEmail.traduction,
+                    hintText:
+                        CerbereLangueVariable.rechercherParEmail.traduction,
                     border: InputBorder.none,
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 12,
@@ -395,13 +422,13 @@ class _UserRow extends StatelessWidget {
                       value: utilisateur.isAdmin,
                       onChanged: (value) {
                         context.read<CerbereUtilisateursBloc>().add(
-                              CerbereUtilisateursSuperAdminChanged(
-                                utilisateurUid: utilisateur.uid,
-                                isAdmin: value,
-                              ),
-                            );
+                          CerbereUtilisateursSuperAdminChanged(
+                            utilisateurUid: utilisateur.uid,
+                            isAdmin: value,
+                          ),
+                        );
                       },
-                      activeThumbColor: CerbereTheme.primary,
+                      activeColor: CerbereTheme.primary,
                     ),
                   ],
                 ),
@@ -448,17 +475,17 @@ class _UserRow extends StatelessWidget {
                     onChanged: (String? newRoleUid) {
                       if (newRoleUid == null) {
                         context.read<CerbereUtilisateursBloc>().add(
-                              CerbereUtilisateursSuppressionRole(
-                                utilisateurUid: utilisateur.uid,
-                              ),
-                            );
+                          CerbereUtilisateursSuppressionRole(
+                            utilisateurUid: utilisateur.uid,
+                          ),
+                        );
                       } else {
                         context.read<CerbereUtilisateursBloc>().add(
-                              CerbereUtilisateursChangementRole(
-                                utilisateurUid: utilisateur.uid,
-                                roleUid: newRoleUid,
-                              ),
-                            );
+                          CerbereUtilisateursChangementRole(
+                            utilisateurUid: utilisateur.uid,
+                            roleUid: newRoleUid,
+                          ),
+                        );
                       }
                     },
                   ),
