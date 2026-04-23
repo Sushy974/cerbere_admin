@@ -1,1 +1,28 @@
 include: package:very_good_analysis/analysis_options.yaml
+
+analyzer:
+  errors:
+    # Stylistic lints hérités du monorepo ZibMarket — non bloquants sur CI.
+    always_put_required_named_parameters_first: ignore
+    always_use_package_imports: ignore
+    avoid_catches_without_on_clauses: ignore
+    avoid_escaping_inner_quotes: ignore
+    avoid_positional_boolean_parameters: ignore
+    avoid_redundant_argument_values: ignore
+    avoid_unused_constructor_parameters: ignore
+    cascade_invocations: ignore
+    comment_references: ignore
+    deprecated_member_use: ignore
+    directives_ordering: ignore
+    discarded_futures: ignore
+    document_ignores: ignore
+    lines_longer_than_80_chars: ignore
+    noop_primitive_operations: ignore
+    prefer_int_literals: ignore
+    public_member_api_docs: ignore
+    sort_constructors_first: ignore
+    sort_pub_dependencies: ignore
+    unnecessary_ignore: ignore
+    unnecessary_library_name: ignore
+    unnecessary_underscores: ignore
+    use_setters_to_change_properties: ignore
