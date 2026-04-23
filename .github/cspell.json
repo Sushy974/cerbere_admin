@@ -1,6 +1,7 @@
 {
   "version": "0.2",
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "language": "en,fr,fr-FR",
   "dictionaries": ["vgv_allowed", "vgv_forbidden"],
   "dictionaryDefinitions": [
     {
@@ -15,7 +16,23 @@
     }
   ],
   "useGitignore": true,
+  "ignorePaths": [
+    "CHANGELOG.md"
+  ],
   "words": [
-    "heracles_admin"
+    "cerbere",
+    "cerberes",
+    "Cerbère",
+    "Sushy",
+    "ZibMarket",
+    "dartdoc",
+    "Firestore",
+    "firestore",
+    "monorepo",
+    "usecase",
+    "usecases",
+    "barrel",
+    "Heracles",
+    "heracles"
   ]
 }
